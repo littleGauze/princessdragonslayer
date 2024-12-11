@@ -18,7 +18,7 @@ func setSpriteRange():
 		Type.AUTOMN:
 			sprite.region_rect = Rect2(16, 32, 32, 9)
 		Type.WINTER:
-			sprite.region_rect = Rect2(16, 96, 32, 9)
+			sprite.region_rect = Rect2(16, 48, 32, 9)
 		_:
 			pass
 

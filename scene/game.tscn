@@ -1,8 +1,162 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj4vhw6oasbcq"]
+[gd_scene load_steps=18 format=3 uid="uid://bj4vhw6oasbcq"]
 
 [ext_resource type="PackedScene" uid="uid://c87pqva2u21qt" path="res://scene/player.tscn" id="1_h1yel"]
 [ext_resource type="PackedScene" uid="uid://byslrn0cg1455" path="res://scene/platform.tscn" id="2_al6md"]
 [ext_resource type="PackedScene" uid="uid://50xbltfk433" path="res://scene/moving_platform.tscn" id="2_j5stk"]
+[ext_resource type="PackedScene" uid="uid://bo3riicrtsigd" path="res://scene/kill_zone.tscn" id="5_2dx7q"]
+
+[sub_resource type="Animation" id="Animation_ibmjh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(433, 267)]
+}
+
+[sub_resource type="Animation" id="Animation_ynv6h"]
+resource_name = "moving_up_down"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(433, 267), Vector2(433, 351)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sod0q"]
+_data = {
+"RESET": SubResource("Animation_ibmjh"),
+"moving_up_down": SubResource("Animation_ynv6h")
+}
+
+[sub_resource type="Animation" id="Animation_cn8mq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(580, 254)]
+}
+
+[sub_resource type="Animation" id="Animation_7tqte"]
+resource_name = "moving"
+length = 1.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(593, 254), Vector2(593, 397)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jqlgn"]
+_data = {
+"RESET": SubResource("Animation_cn8mq"),
+"moving": SubResource("Animation_7tqte")
+}
+
+[sub_resource type="Animation" id="Animation_h37ny"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(812, 255)]
+}
+
+[sub_resource type="Animation" id="Animation_1podj"]
+resource_name = "moving"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(812, 255), Vector2(812, 423)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fri8q"]
+_data = {
+"RESET": SubResource("Animation_h37ny"),
+"moving": SubResource("Animation_1podj")
+}
+
+[sub_resource type="Animation" id="Animation_mwbdi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(727, 508)]
+}
+
+[sub_resource type="Animation" id="Animation_bily2"]
+resource_name = "moving"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(727, 508), Vector2(867, 508)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_px5kf"]
+_data = {
+"RESET": SubResource("Animation_mwbdi"),
+"moving": SubResource("Animation_bily2")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_nuhgt"]
 
 [node name="Game" type="Node2D"]
 
@@ -15,19 +169,50 @@ position = Vector2(194, 538)
 [node name="Platform" parent="Platforms" instance=ExtResource("2_al6md")]
 
 [node name="MovingPlatform" parent="Platforms" instance=ExtResource("2_j5stk")]
-position = Vector2(433, 308)
+position = Vector2(433, 267)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/MovingPlatform"]
+libraries = {
+"": SubResource("AnimationLibrary_sod0q")
+}
+autoplay = "moving_up_down"
 
 [node name="MovingPlatform3" parent="Platforms" instance=ExtResource("2_j5stk")]
-position = Vector2(580, 292)
+position = Vector2(580, 254)
 type = 1
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/MovingPlatform3"]
+libraries = {
+"": SubResource("AnimationLibrary_jqlgn")
+}
+autoplay = "moving"
+
 [node name="MovingPlatform4" parent="Platforms" instance=ExtResource("2_j5stk")]
-position = Vector2(812, 344)
+position = Vector2(812, 255)
 type = 2
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/MovingPlatform4"]
+libraries = {
+"": SubResource("AnimationLibrary_fri8q")
+}
+autoplay = "moving"
+
 [node name="MovingPlatform5" parent="Platforms" instance=ExtResource("2_j5stk")]
-position = Vector2(797, 503)
+position = Vector2(727, 508)
 type = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Platforms/MovingPlatform5"]
+libraries = {
+"": SubResource("AnimationLibrary_px5kf")
+}
+autoplay = "moving"
 
 [node name="MovingPlatform2" parent="Platforms" instance=ExtResource("2_j5stk")]
 position = Vector2(298, 195)
+
+[node name="KillZone" parent="." instance=ExtResource("5_2dx7q")]
+position = Vector2(284, 614)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
+shape = SubResource("WorldBoundaryShape2D_nuhgt")
