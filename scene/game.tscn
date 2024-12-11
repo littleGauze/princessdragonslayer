@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj4vhw6oasbcq"]
+
+[ext_resource type="PackedScene" uid="uid://c87pqva2u21qt" path="res://scene/player.tscn" id="1_h1yel"]
+[ext_resource type="PackedScene" uid="uid://byslrn0cg1455" path="res://scene/platform.tscn" id="2_al6md"]
+[ext_resource type="PackedScene" uid="uid://50xbltfk433" path="res://scene/moving_platform.tscn" id="2_j5stk"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_h1yel")]
+z_index = 5
+position = Vector2(194, 538)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("2_al6md")]
+
+[node name="MovingPlatform" parent="Platforms" instance=ExtResource("2_j5stk")]
+position = Vector2(433, 308)
+
+[node name="MovingPlatform3" parent="Platforms" instance=ExtResource("2_j5stk")]
+position = Vector2(580, 292)
+type = 1
+
+[node name="MovingPlatform4" parent="Platforms" instance=ExtResource("2_j5stk")]
+position = Vector2(812, 344)
+type = 2
+
+[node name="MovingPlatform5" parent="Platforms" instance=ExtResource("2_j5stk")]
+position = Vector2(797, 503)
+type = 2
+
+[node name="MovingPlatform2" parent="Platforms" instance=ExtResource("2_j5stk")]
+position = Vector2(298, 195)
