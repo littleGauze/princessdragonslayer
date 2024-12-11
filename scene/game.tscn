@@ -1,9 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bj4vhw6oasbcq"]
+[gd_scene load_steps=19 format=3 uid="uid://bj4vhw6oasbcq"]
 
 [ext_resource type="PackedScene" uid="uid://c87pqva2u21qt" path="res://scene/player.tscn" id="1_h1yel"]
 [ext_resource type="PackedScene" uid="uid://byslrn0cg1455" path="res://scene/platform.tscn" id="2_al6md"]
 [ext_resource type="PackedScene" uid="uid://50xbltfk433" path="res://scene/moving_platform.tscn" id="2_j5stk"]
 [ext_resource type="PackedScene" uid="uid://bo3riicrtsigd" path="res://scene/kill_zone.tscn" id="5_2dx7q"]
+[ext_resource type="PackedScene" uid="uid://b0tkgugbodhl0" path="res://scene/coin.tscn" id="5_rlnja"]
 
 [sub_resource type="Animation" id="Animation_ibmjh"]
 length = 0.001
@@ -216,3 +217,47 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
 shape = SubResource("WorldBoundaryShape2D_nuhgt")
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(293, 483)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(525, 437)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(555, 338)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(448, 259)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(701, 243)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(925, 309)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(999, 309)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(1024, 499)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(1011, 499)
+
+[node name="Coin10" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(995, 499)
+
+[node name="Coin11" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(649, 499)
+
+[node name="Coin12" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(699, 386)
+
+[node name="Coin13" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(462, 499)
+
+[node name="Coin14" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(317, 547)
