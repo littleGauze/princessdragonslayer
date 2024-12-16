@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://8mv73il578h1"]
+
+[ext_resource type="Texture2D" uid="uid://bidiktovmgqj4" path="res://assets/sprites/partical_square.png" id="1_1gnwp"]
+
+[sub_resource type="Curve" id="Curve_o08cs"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.57384, 0.868132), -0.781319, -0.781319, 0, 0, Vector2(1, 0), -3.75339, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c1ej3"]
+curve = SubResource("Curve_o08cs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_etlvn"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(0, 1, 1)
+angle_min = -207.2
+angle_max = 63.2
+direction = Vector3(0, 0, 0)
+spread = 102.09
+initial_velocity_min = 86.65
+initial_velocity_max = 251.49
+angular_velocity_min = -256.62
+angular_velocity_max = 98.12
+orbit_velocity_min = 0.0380001
+orbit_velocity_max = 0.135
+gravity = Vector3(0, 98, 0)
+linear_accel_min = -33.38
+linear_accel_max = -8.5
+radial_accel_min = -31.72
+radial_accel_max = -8.79
+tangential_accel_min = -2.93
+tangential_accel_max = 36.58
+damping_min = 31.79
+damping_max = 51.058
+scale_min = 0.5
+scale_max = 1.5
+color = Color(0.917647, 0.184314, 1, 0.647059)
+alpha_curve = SubResource("CurveTexture_c1ej3")
+hue_variation_min = -0.37
+hue_variation_max = 0.37
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.095
+turbulence_initial_displacement_min = -34.1
+turbulence_initial_displacement_max = -6.6
+
+[node name="Fireworks" type="GPUParticles2D"]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_etlvn")
+texture = ExtResource("1_1gnwp")
+explosiveness = 1.0
+randomness = 0.41
