@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://8mv73il578h1"]
+[gd_scene load_steps=6 format=3 uid="uid://8mv73il578h1"]
 
 [ext_resource type="Texture2D" uid="uid://bidiktovmgqj4" path="res://assets/sprites/partical_square.png" id="1_1gnwp"]
+[ext_resource type="Script" path="res://scripts/fireworks.gd" id="2_5vp28"]
 
 [sub_resource type="Curve" id="Curve_o08cs"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.57384, 0.868132), -0.781319, -0.781319, 0, 0, Vector2(1, 0), -3.75339, 0.0, 0, 0]
@@ -15,14 +16,13 @@ emission_shape_scale = Vector3(0, 1, 1)
 angle_min = -207.2
 angle_max = 63.2
 direction = Vector3(0, 0, 0)
-spread = 102.09
 initial_velocity_min = 86.65
 initial_velocity_max = 251.49
 angular_velocity_min = -256.62
 angular_velocity_max = 98.12
 orbit_velocity_min = 0.0380001
 orbit_velocity_max = 0.135
-gravity = Vector3(0, 98, 0)
+gravity = Vector3(0, 198, 0)
 linear_accel_min = -33.38
 linear_accel_max = -8.5
 radial_accel_min = -31.72
@@ -48,3 +48,4 @@ process_material = SubResource("ParticleProcessMaterial_etlvn")
 texture = ExtResource("1_1gnwp")
 explosiveness = 1.0
 randomness = 0.41
+script = ExtResource("2_5vp28")

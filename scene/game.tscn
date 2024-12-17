@@ -1,16 +1,17 @@
-[gd_scene load_steps=25 format=3 uid="uid://bj4vhw6oasbcq"]
+[gd_scene load_steps=26 format=3 uid="uid://bj4vhw6oasbcq"]
 
 [ext_resource type="PackedScene" uid="uid://c87pqva2u21qt" path="res://scene/player.tscn" id="1_h1yel"]
 [ext_resource type="PackedScene" uid="uid://byslrn0cg1455" path="res://scene/platform.tscn" id="2_al6md"]
 [ext_resource type="PackedScene" uid="uid://50xbltfk433" path="res://scene/moving_platform.tscn" id="2_j5stk"]
 [ext_resource type="PackedScene" uid="uid://d0bcaupriq4jj" path="res://scene/brittle_platform.tscn" id="4_mawqo"]
 [ext_resource type="PackedScene" uid="uid://bo3riicrtsigd" path="res://scene/kill_zone.tscn" id="5_2dx7q"]
-[ext_resource type="PackedScene" uid="uid://b0tkgugbodhl0" path="res://scene/coin.tscn" id="5_rlnja"]
+[ext_resource type="PackedScene" uid="uid://b1buhlelf4n5g" path="res://scene/coin.tscn" id="5_rlnja"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="6_g6jb5"]
 [ext_resource type="PackedScene" uid="uid://pdl2hj20hfh2" path="res://scene/mistery_brick.tscn" id="7_lrgi7"]
 [ext_resource type="FontFile" uid="uid://bxv1qfp8s0v8f" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="7_x5hiw"]
 [ext_resource type="FontFile" uid="uid://ct3dlal6ykclp" path="res://assets/fonts/PixelOperator8.ttf" id="8_dpw8j"]
 [ext_resource type="PackedScene" uid="uid://dnclxgh7fmlm2" path="res://scene/coin_physics.tscn" id="8_j4bgq"]
+[ext_resource type="PackedScene" uid="uid://e2s5nfphkymf" path="res://scene/win.tscn" id="12_u5oyl"]
 
 [sub_resource type="Animation" id="Animation_ibmjh"]
 length = 0.001
@@ -334,3 +335,6 @@ text = "Space to Jump"
 
 [node name="BrittlePlatform" parent="." instance=ExtResource("4_mawqo")]
 position = Vector2(243, 534)
+
+[node name="Win" parent="." instance=ExtResource("12_u5oyl")]
+position = Vector2(61, 522)

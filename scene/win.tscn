@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://e2s5nfphkymf"]
+
+[ext_resource type="Script" path="res://scripts/win.gd" id="1_bwihn"]
+[ext_resource type="PackedScene" uid="uid://8mv73il578h1" path="res://scene/fireworks.tscn" id="2_ke1hu"]
+
+[node name="Win" type="Node2D"]
+script = ExtResource("1_bwihn")
+
+[node name="Fireworks" parent="." instance=ExtResource("2_ke1hu")]
+
+[node name="Fireworks2" parent="." instance=ExtResource("2_ke1hu")]
+position = Vector2(262, 0)
+dir = -1
