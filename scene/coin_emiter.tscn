@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfwfq3sdnvydf"]
+
+[ext_resource type="Script" path="res://scripts/coin_emiter.gd" id="1_n6f43"]
+[ext_resource type="PackedScene" uid="uid://dnclxgh7fmlm2" path="res://scene/coin_physics.tscn" id="2_smijm"]
+
+[node name="CoinEmiter" type="Node2D"]
+script = ExtResource("1_n6f43")
+Coin = ExtResource("2_smijm")

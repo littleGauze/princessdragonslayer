@@ -19,3 +19,5 @@ func hit():
 	down.tween_property(self, 'position', Vector2(position.x, position.y), .1)
 	down.set_trans(Tween.TRANS_CUBIC)
 	down.set_ease(Tween.EASE_OUT)
+
+	$CoinEmiter.coin_emitted.emit(1)

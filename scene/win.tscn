@@ -6,8 +6,8 @@
 [node name="Win" type="Node2D"]
 script = ExtResource("1_bwihn")
 
-[node name="Fireworks" parent="." instance=ExtResource("2_ke1hu")]
+[node name="Left" parent="." instance=ExtResource("2_ke1hu")]
 
-[node name="Fireworks2" parent="." instance=ExtResource("2_ke1hu")]
+[node name="Right" parent="." instance=ExtResource("2_ke1hu")]
 position = Vector2(262, 0)
-dir = -1
+scale = Vector2(-1, -1)

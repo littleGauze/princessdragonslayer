@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://pdl2hj20hfh2"]
+[gd_scene load_steps=6 format=3 uid="uid://pdl2hj20hfh2"]
 
 [ext_resource type="Script" path="res://scripts/mistery_brick.gd" id="1_j2otq"]
 [ext_resource type="Texture2D" uid="uid://frp5s5r66fv" path="res://assets/sprites/world_tileset.png" id="1_xvnuh"]
+[ext_resource type="PackedScene" uid="uid://cfwfq3sdnvydf" path="res://scene/coin_emiter.tscn" id="3_yhb55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ssmqj"]
 size = Vector2(16, 14)
@@ -28,5 +29,7 @@ shape = SubResource("RectangleShape2D_uw7p7")
 texture = ExtResource("1_xvnuh")
 region_enabled = true
 region_rect = Rect2(0, 32, 16, 16)
+
+[node name="CoinEmiter" parent="." instance=ExtResource("3_yhb55")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

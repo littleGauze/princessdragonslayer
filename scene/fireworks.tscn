@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://8mv73il578h1"]
+[gd_scene load_steps=9 format=3 uid="uid://8mv73il578h1"]
 
 [ext_resource type="Texture2D" uid="uid://bidiktovmgqj4" path="res://assets/sprites/partical_square.png" id="1_1gnwp"]
-[ext_resource type="Script" path="res://scripts/fireworks.gd" id="2_5vp28"]
 
 [sub_resource type="Curve" id="Curve_o08cs"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.57384, 0.868132), -0.781319, -0.781319, 0, 0, Vector2(1, 0), -3.75339, 0.0, 0, 0]
@@ -10,9 +9,27 @@ point_count = 3
 [sub_resource type="CurveTexture" id="CurveTexture_c1ej3"]
 curve = SubResource("Curve_o08cs")
 
+[sub_resource type="Curve" id="Curve_bmhuy"]
+_data = [Vector2(0, 0.523244), 0.0, -0.0201446, 0, 1, Vector2(1, 0.503099), -0.0201446, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_ty8cm"]
+min_value = -1.0
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(0.259358, 1), 0.0, 0.0, 0, 0, Vector2(0.596257, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_vh0tx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 1, Vector2(1, 1), 0.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_qm4w8"]
+curve_x = SubResource("Curve_bmhuy")
+curve_y = SubResource("Curve_ty8cm")
+curve_z = SubResource("Curve_vh0tx")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_etlvn"]
+particle_flag_rotate_y = true
 particle_flag_disable_z = true
-emission_shape_scale = Vector3(0, 1, 1)
 angle_min = -207.2
 angle_max = 63.2
 direction = Vector3(0, 0, 0)
@@ -23,16 +40,17 @@ angular_velocity_max = 98.12
 orbit_velocity_min = 0.0380001
 orbit_velocity_max = 0.135
 gravity = Vector3(0, 198, 0)
-linear_accel_min = -33.38
-linear_accel_max = -8.5
-radial_accel_min = -31.72
-radial_accel_max = -8.79
+linear_accel_min = -6.55
+linear_accel_max = 18.33
+radial_accel_min = -21.96
+radial_accel_max = 0.969998
 tangential_accel_min = -2.93
 tangential_accel_max = 36.58
-damping_min = 31.79
-damping_max = 51.058
+damping_min = 34.717
+damping_max = 53.985
 scale_min = 0.5
 scale_max = 1.5
+scale_curve = SubResource("CurveXYZTexture_qm4w8")
 color = Color(0.917647, 0.184314, 1, 0.647059)
 alpha_curve = SubResource("CurveTexture_c1ej3")
 hue_variation_min = -0.37
@@ -43,9 +61,10 @@ turbulence_initial_displacement_min = -34.1
 turbulence_initial_displacement_max = -6.6
 
 [node name="Fireworks" type="GPUParticles2D"]
-amount = 100
+emitting = false
+amount = 200
 process_material = SubResource("ParticleProcessMaterial_etlvn")
 texture = ExtResource("1_1gnwp")
+lifetime = 1.5
 explosiveness = 1.0
 randomness = 0.41
-script = ExtResource("2_5vp28")
