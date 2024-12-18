@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bj4vhw6oasbcq"]
+[gd_scene load_steps=26 format=3 uid="uid://bj4vhw6oasbcq"]
 
 [ext_resource type="PackedScene" uid="uid://c87pqva2u21qt" path="res://scene/player.tscn" id="1_h1yel"]
 [ext_resource type="PackedScene" uid="uid://byslrn0cg1455" path="res://scene/platform.tscn" id="2_al6md"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://pdl2hj20hfh2" path="res://scene/mistery_brick.tscn" id="7_lrgi7"]
 [ext_resource type="FontFile" uid="uid://bxv1qfp8s0v8f" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="7_x5hiw"]
 [ext_resource type="FontFile" uid="uid://ct3dlal6ykclp" path="res://assets/fonts/PixelOperator8.ttf" id="8_dpw8j"]
-[ext_resource type="PackedScene" uid="uid://dnclxgh7fmlm2" path="res://scene/coin_physics.tscn" id="8_j4bgq"]
 [ext_resource type="PackedScene" uid="uid://e2s5nfphkymf" path="res://scene/win.tscn" id="12_u5oyl"]
 
 [sub_resource type="Animation" id="Animation_ibmjh"]
@@ -236,9 +235,6 @@ position = Vector2(1004, 17)
 [node name="MisteryBrick2" parent="Platforms" instance=ExtResource("7_lrgi7")]
 position = Vector2(1051, 7)
 
-[node name="MisteryBrick3" parent="Platforms" instance=ExtResource("7_lrgi7")]
-position = Vector2(220, 518)
-
 [node name="KillZone" parent="." instance=ExtResource("5_2dx7q")]
 position = Vector2(284, 614)
 collision_mask = 2
@@ -298,9 +294,6 @@ position = Vector2(462, 499)
 
 [node name="Coin14" parent="Coins" instance=ExtResource("5_rlnja")]
 position = Vector2(317, 547)
-
-[node name="RigidBody2D" parent="Coins" instance=ExtResource("8_j4bgq")]
-position = Vector2(244, 507)
 
 [node name="GameManager" type="Node" parent="."]
 unique_name_in_owner = true

@@ -1,5 +1,5 @@
 extends Area2D
 
 func _on_body_entered(_body: Node2D):
-	%GameManager.add_score(1)
+	SignalBus.bus.emit(SignalBus.SignalType.ADD_SCORE, { score = 1 })
 	$AnimationPlayer.play('pickup')

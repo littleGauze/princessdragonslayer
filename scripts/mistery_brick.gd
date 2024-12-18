@@ -4,10 +4,9 @@ extends StaticBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print('mistery brick ready')
-	pass # Replace with function body.
 
 
-func _on_area_2d_body_entered(body:Node2D) -> void:
+func _on_area_2d_body_entered(_body:Node2D) -> void:
 	hit()
 
 func hit():
@@ -20,4 +19,4 @@ func hit():
 	down.set_trans(Tween.TRANS_CUBIC)
 	down.set_ease(Tween.EASE_OUT)
 
-	$CoinEmiter.coin_emitted.emit(1)
+	$CoinEmiter.coin_emitted.emit(100)

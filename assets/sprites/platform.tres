@@ -198,4 +198,5 @@ texture = ExtResource("1_hhgiy")
 
 [resource]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_m3p3i")
