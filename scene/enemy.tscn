@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://b875jqrknvvnc"]
+[gd_scene load_steps=20 format=3 uid="uid://b875jqrknvvnc"]
 
 [ext_resource type="Texture2D" uid="uid://bo4fnrr2hqmj" path="res://assets/sprites/slime_green.png" id="1_2mxa2"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_8b5en"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="2_r3fpb"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="3_6wvjm"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="4_g4d6g"]
@@ -93,15 +94,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_ny1wp")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"walking",
 "speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yovak"]
-size = Vector2(149, 22)
+size = Vector2(59, 22)
 
 [node name="Enemy" type="CharacterBody2D"]
-position = Vector2(175, 76)
+script = ExtResource("1_8b5en")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.5)
@@ -109,13 +110,15 @@ shape = SubResource("RectangleShape2D_mv6fo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dmfdx")
-animation = &"walk"
+animation = &"walking"
+autoplay = "walking"
+frame_progress = 0.467301
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-7.5, 1)
+position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_yovak")
 
 [node name="StateChart" type="Node" parent="."]
@@ -131,6 +134,7 @@ script = ExtResource("4_g4d6g")
 [node name="Transition" type="Node" parent="StateChart/CompoundState/Idle"]
 script = ExtResource("5_ypc3y")
 to = NodePath("../../Awake")
+event = &"Awake"
 delay_in_seconds = "0.0"
 
 [node name="Awake" type="Node" parent="StateChart/CompoundState"]
@@ -139,7 +143,20 @@ script = ExtResource("4_g4d6g")
 [node name="Transition" type="Node" parent="StateChart/CompoundState/Awake"]
 script = ExtResource("5_ypc3y")
 to = NodePath("../../Walking")
+event = &"Walking"
 delay_in_seconds = "0.0"
 
 [node name="Walking" type="Node" parent="StateChart/CompoundState"]
 script = ExtResource("4_g4d6g")
+
+[node name="RayRight" type="RayCast2D" parent="."]
+target_position = Vector2(14, 0)
+
+[node name="RayLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-15, 0)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="state_entered" from="StateChart/CompoundState/Idle" to="." method="_on_idle_state_entered"]
+[connection signal="state_entered" from="StateChart/CompoundState/Awake" to="." method="_on_awake_state_entered"]
+[connection signal="state_entered" from="StateChart/CompoundState/Walking" to="." method="_on_walking_state_entered"]

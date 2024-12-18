@@ -1,5 +1,6 @@
 extends StaticBody2D
 
+@export var amount: int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,6 +9,8 @@ func _ready() -> void:
 
 func _on_area_2d_body_entered(_body:Node2D) -> void:
 	hit()
+	$AudioStreamPlayer2D.play()
+	$Sprite2D.visible = true
 
 func hit():
 	var up: Tween = get_tree().create_tween()
@@ -19,4 +22,4 @@ func hit():
 	down.set_trans(Tween.TRANS_CUBIC)
 	down.set_ease(Tween.EASE_OUT)
 
-	$CoinEmiter.coin_emitted.emit(100)
+	$CoinEmiter.coin_emitted.emit(amount)

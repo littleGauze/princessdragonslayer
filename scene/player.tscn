@@ -1,7 +1,8 @@
-[gd_scene load_steps=41 format=3 uid="uid://c87pqva2u21qt"]
+[gd_scene load_steps=42 format=3 uid="uid://c87pqva2u21qt"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_catxo"]
 [ext_resource type="Texture2D" uid="uid://bkvee2v74ujsj" path="res://assets/sprites/knight.png" id="2_cxivh"]
+[ext_resource type="AudioStream" uid="uid://2htq7mb8ok7d" path="res://assets/sounds/jump.wav" id="3_pl4y2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_utgfx"]
 radius = 6.0
@@ -308,3 +309,7 @@ limit_top = -200
 limit_right = 1152
 limit_bottom = 648
 position_smoothing_enabled = true
+
+[node name="JumpSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pl4y2")
+bus = &"SFX"

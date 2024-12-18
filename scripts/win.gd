@@ -12,8 +12,11 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_area_2d_body_entered(node: Node2D) -> void:
+	$Left.restart()
+	$Right.restart()
 	$Left.emitting = true
 	$Right.emitting = true
+	$SFX.play()
 
 func _on_area_2d_body_exited(body:Node2D) -> void:
 	$Left.emitting = false
