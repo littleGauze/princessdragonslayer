@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 150.0
 const JUMP_VELOCITY = -350.0
 
+var _is_dead := false
+
 @onready var animte2d := $AnimatedSprite2D
 
 func _physics_process(delta: float) -> void:
@@ -12,7 +14,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not _is_dead:
 		velocity.y = JUMP_VELOCITY
 		$JumpSFX.play()
 
@@ -24,17 +26,22 @@ func _physics_process(delta: float) -> void:
 	elif direction > 0:
 		animte2d.flip_h = false
 
-	if is_on_floor():
-		if direction:
-			animte2d.play("run")
+	if not _is_dead:
+		if is_on_floor():
+			if direction:
+				animte2d.play("run")
+			else:
+				animte2d.play("idle")
 		else:
-			animte2d.play("idle")
-	else:
-		animte2d.play("jump")
+			animte2d.play("jump")
 
-	if direction:
+	if direction and not _is_dead:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func dead():
+	_is_dead = true
+	animte2d.play("dead")

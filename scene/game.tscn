@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bj4vhw6oasbcq"]
+[gd_scene load_steps=46 format=3 uid="uid://bj4vhw6oasbcq"]
 
 [ext_resource type="PackedScene" uid="uid://c87pqva2u21qt" path="res://scene/player.tscn" id="1_h1yel"]
 [ext_resource type="PackedScene" uid="uid://byslrn0cg1455" path="res://scene/platform.tscn" id="2_al6md"]
@@ -14,6 +14,8 @@
 [ext_resource type="FontFile" uid="uid://ct3dlal6ykclp" path="res://assets/fonts/PixelOperator8.ttf" id="8_dpw8j"]
 [ext_resource type="PackedScene" uid="uid://b875jqrknvvnc" path="res://scene/enemy.tscn" id="8_yuptj"]
 [ext_resource type="PackedScene" uid="uid://e2s5nfphkymf" path="res://scene/win.tscn" id="12_u5oyl"]
+[ext_resource type="Texture2D" uid="uid://cm181mtqccfhb" path="res://assets/sprites/coin.png" id="15_1vv2n"]
+[ext_resource type="Script" path="res://scripts/canvas_layer.gd" id="15_fseyl"]
 
 [sub_resource type="Animation" id="Animation_ibmjh"]
 length = 0.001
@@ -171,6 +173,107 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckcji"]
 size = Vector2(16, 16)
 
+[sub_resource type="LabelSettings" id="LabelSettings_jfpmd"]
+font = ExtResource("7_x5hiw")
+
+[sub_resource type="LabelSettings" id="LabelSettings_b2wgq"]
+font_size = 38
+font_color = Color(0.984314, 0.768627, 0.105882, 1)
+outline_size = 8
+outline_color = Color(0.94902, 0.454902, 0.105882, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a3lv"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eitmc"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k66bv"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kmy3"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gq2k"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7nr2"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x0w2"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hxl4"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_362mt"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng5gx"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aysde"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptvvq"]
+atlas = ExtResource("15_1vv2n")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0wpt7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a3lv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eitmc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k66bv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kmy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gq2k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7nr2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x0w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hxl4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_362mt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng5gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aysde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptvvq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_h1yel")]
@@ -248,7 +351,6 @@ stream = ExtResource("7_70jeq")
 
 [node name="KillZone" parent="." instance=ExtResource("5_2dx7q")]
 position = Vector2(284, 614)
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillZone"]
 shape = SubResource("WorldBoundaryShape2D_nuhgt")
@@ -256,13 +358,13 @@ shape = SubResource("WorldBoundaryShape2D_nuhgt")
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("5_rlnja")]
-position = Vector2(293, 483)
+position = Vector2(284, 484)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("5_rlnja")]
 position = Vector2(525, 437)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("5_rlnja")]
-position = Vector2(555, 338)
+position = Vector2(557, 340)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("5_rlnja")]
 position = Vector2(448, 259)
@@ -280,25 +382,28 @@ position = Vector2(189, 133)
 position = Vector2(701, 243)
 
 [node name="Coin6" parent="Coins" instance=ExtResource("5_rlnja")]
-position = Vector2(925, 309)
+position = Vector2(941, 309)
 
 [node name="Coin7" parent="Coins" instance=ExtResource("5_rlnja")]
-position = Vector2(999, 309)
+position = Vector2(988, 309)
 
 [node name="Coin8" parent="Coins" instance=ExtResource("5_rlnja")]
-position = Vector2(1024, 499)
+position = Vector2(1020, 500)
+
+[node name="Coin18" parent="Coins" instance=ExtResource("5_rlnja")]
+position = Vector2(1027, 52)
 
 [node name="Coin9" parent="Coins" instance=ExtResource("5_rlnja")]
-position = Vector2(1011, 499)
+position = Vector2(1004, 500)
 
 [node name="Coin10" parent="Coins" instance=ExtResource("5_rlnja")]
-position = Vector2(995, 499)
+position = Vector2(989, 500)
 
 [node name="Coin11" parent="Coins" instance=ExtResource("5_rlnja")]
-position = Vector2(649, 499)
+position = Vector2(652, 500)
 
 [node name="Coin12" parent="Coins" instance=ExtResource("5_rlnja")]
-position = Vector2(699, 386)
+position = Vector2(700, 388)
 
 [node name="Coin13" parent="Coins" instance=ExtResource("5_rlnja")]
 position = Vector2(462, 499)
@@ -352,9 +457,73 @@ shape = SubResource("RectangleShape2D_ckcji")
 
 [node name="Enemys" type="Node2D" parent="."]
 z_index = 1
+metadata/_edit_group_ = true
 
 [node name="Enemy" parent="Enemys" instance=ExtResource("8_yuptj")]
-position = Vector2(259, 540)
+position = Vector2(301, 479)
+metadata/_edit_group_ = true
+
+[node name="Enemy2" parent="Enemys" instance=ExtResource("8_yuptj")]
+position = Vector2(668, 496)
+type = 1
+
+[node name="Enemy3" parent="Enemys" instance=ExtResource("8_yuptj")]
+position = Vector2(972, 496)
+type = 1
+
+[node name="Enemy4" parent="Enemys" instance=ExtResource("8_yuptj")]
+position = Vector2(1036, 496)
+type = 1
+
+[node name="Enemy5" parent="Enemys" instance=ExtResource("8_yuptj")]
+position = Vector2(972, 304)
+type = 1
+
+[node name="Enemy6" parent="Enemys" instance=ExtResource("8_yuptj")]
+position = Vector2(716, 239)
+type = 1
+
+[node name="Enemy7" parent="Enemys" instance=ExtResource("8_yuptj")]
+position = Vector2(508, 335)
+
+[node name="Enemy8" parent="Enemys" instance=ExtResource("8_yuptj")]
+position = Vector2(316, 239)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("15_fseyl")
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+modulate = Color(0.231373, 0.231373, 0.231373, 0.745098)
+offset_left = 52.0
+offset_top = 20.0
+offset_right = 84.0
+offset_bottom = 52.0
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("7_x5hiw")
+text = "x"
+label_settings = SubResource("LabelSettings_jfpmd")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+offset_left = 81.0
+offset_top = 17.0
+offset_right = 321.0
+offset_bottom = 56.0
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.984314, 0.768627, 0.105882, 1)
+theme_override_fonts/font = ExtResource("7_x5hiw")
+text = "0"
+label_settings = SubResource("LabelSettings_b2wgq")
+vertical_alignment = 1
+uppercase = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(34, 34)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_0wpt7")
+autoplay = "default"
 
 [connection signal="body_entered" from="Win/Area2D" to="Win" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Win/Area2D" to="Win" method="_on_area_2d_body_exited"]

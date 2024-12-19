@@ -18,7 +18,7 @@ func generate_coin(amount: int = 1):
 		coin.position = Vector2(0, -16)
 		call_deferred("add_child", coin)
 		var dir = random_dir()
-		coin.apply_central_impulse(dir * 300 * randf() + .4)
+		coin.apply_central_impulse(dir * 300 * (randf() + .4))
 
 func random_dir():
 	var angle = PI / 6 - randf() * (PI / 3) + PI / 2

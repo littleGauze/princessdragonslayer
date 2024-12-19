@@ -2,11 +2,6 @@ extends StaticBody2D
 
 @export var amount: int = 1
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	print('mistery brick ready')
-
-
 func _on_area_2d_body_entered(_body:Node2D) -> void:
 	hit()
 	$AudioStreamPlayer2D.play()

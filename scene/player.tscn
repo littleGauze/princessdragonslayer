@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c87pqva2u21qt"]
+[gd_scene load_steps=41 format=3 uid="uid://c87pqva2u21qt"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_catxo"]
 [ext_resource type="Texture2D" uid="uid://bkvee2v74ujsj" path="res://assets/sprites/knight.png" id="2_cxivh"]
@@ -7,19 +7,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_utgfx"]
 radius = 6.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pm8xw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_byjj7"]
 atlas = ExtResource("2_cxivh")
-region = Rect2(0, 224, 32, 32)
+region = Rect2(64, 192, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7m3mk"]
-atlas = ExtResource("2_cxivh")
-region = Rect2(32, 224, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1yvdy"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_afj6s"]
 atlas = ExtResource("2_cxivh")
 region = Rect2(64, 224, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dsic5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5vik"]
 atlas = ExtResource("2_cxivh")
 region = Rect2(96, 224, 32, 32)
 
@@ -154,21 +150,18 @@ region = Rect2(224, 96, 32, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_mm5kp"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pm8xw")
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_byjj7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7m3mk")
+"texture": SubResource("AtlasTexture_afj6s")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1yvdy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dsic5")
+"texture": SubResource("AtlasTexture_c5vik")
 }],
-"loop": true,
+"loop": false,
 "name": &"dead",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -298,9 +291,10 @@ shape = SubResource("CircleShape2D_utgfx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 2)
 sprite_frames = SubResource("SpriteFrames_mm5kp")
-animation = &"run"
+animation = &"dead"
 autoplay = "idle"
-frame_progress = 0.873512
+frame = 2
+frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.5, 3.5)
